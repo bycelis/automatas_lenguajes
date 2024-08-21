@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>
+      Automatas de lenguajes - 2024-II
+    </title>
+  </head>
+  <body>
+
+    <div class="d-flex justify-content-center align-items-center min-vh-100 bienvenida">
+
+      <div class="p-5 bg-light rounded">
+        <h1>Autómatas de lenguajes</h1>
+        <div class="text-center">
+          <p>Brandon Yesid Celis Orejarena</p>
+          <p>Javier Ricardo Baron Fuentes</p>
+          <p>E196</p>
+          <a class="btn btn-sm btn-block btn-primary ingresoCalculadora">
+            Ingresar al sistema
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="">
+      <a class="finalizar btn btn-sm btn-danger">
+        Salir
+      </a>
+  
+      <div class="contenido">
+        <div class="row flex-xl-nowrap">
+          <div class="col-md-3 col-xl-2">
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Alfabetos
+                    </a>
+                  </h2>
+                </div>
+            
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_pertenencia')">Pertenencia</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_union')">Unión</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_interseccion')">Intersección</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_complemento')">Complemento</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_absoluta')">Diferencia absoluta</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_simetrica')">Diferencia simétrica</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <a class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Cadena
+                    </a>
+                  </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_concatenacion')">Concatenación</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_potenciacion')">Potenciación</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_inversa')">Inversa</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_lenguaje')">Lenguaje</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h2 class="mb-0">
+                    <a class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Lenguajes
+                    </a>
+                  </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_potencia')">Potencia</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_concatenacion')">Concatenación</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_inversa')">Inversa</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_union')">Unión</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_interseccion')">Intersección</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_resta')">Resta</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_clausula_de_kleene')">Cláusula de Kleene</a>
+                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_positiva')">Positiva</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-8 col-xl-10">
+
+            <div class="card">
+              <div class="card-body">
+
+                <div class="seleccioneUnaOpcion">
+                  Debe seleccionar una opción a consultar
+                </div>
+                
+                <div class="opcionSeleccionada d-none">
+                  
+                  <form onsubmit="return false">
+                    <h3 class="titleInput"></h3>
+
+                    <label for="">Ingrese x</label>
+                    <input type="text" class="form-control input1" name="conjuntoA" id="conjuntoA" placeholder="Ingrese valor">
+                    <label for="">Ingrese y</label>
+                    <input type="text" class="form-control input2" id="conjuntoB" name="conjuntoB" placeholder="Ingrese valor">
+                    <a href="#" class="m-1 btn btn-sm btn-primary mt-2 limpiarValores">
+                      Limpiar Valores
+                    </a>
+                    <a pys-onClick="" id="botonConsulta" type="submit" href="#" class="m-1 btn btn-sm btn-success mt-2 calcularButton">
+                      Calcular
+                    </a>
+                  </form>
+                  <hr>
+                  <div class="card">
+                    <div class="card-body">
+                      Resultado
+                      <p id="output"></p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alfabeto Pertenencia -->
+    <py-script>
+      def alfabeto_pertenencia(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Pertencia(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+
+      def Pertencia(a,b):
+        listA = list(map(str.strip, a.split(',')))
+        listB = list(map(str.strip, b.split(',')))
+        conjuntoA = set(listA)
+        conjuntoB = set(listB)
+        listresult =[]
+        for i in conjuntoB:
+          pertenece = False
+          letra = ""
+        for x in conjuntoA:
+          if (i == x):
+            pertenece = True
+            letra = i
+          else:
+            letra = i
+          if(pertenece == True):
+            result = letra, " ∈ A"
+            listresult.append(result)
+          else:
+            result = letra, " ∉ A"
+            listresult.append(result)
+          conjuntoRest = set(listresult)
+          return conjuntoRest
+    </py-script>
+
+    <!-- Alfabeto Union -->
+    <py-script>
+      def alfabeto_union(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Union(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+      def Union(a,b):
+        listA = list(map(str.strip, a.split(',')))
+        listB = list(map(str.strip, b.split(',')))
+        conjuntoA = set(listA)
+        conjuntoB = set(listB)
+        return "(A ∪ B) = ",conjuntoA|conjuntoB
+    </py-script>
+    
+    <!-- Alfabeto Intersección -->
+    <py-script>
+      def alfabeto_interseccion(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Interseccion(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+      def Interseccion(a,b):
+        listA = list(map(str.strip, a.split(',')))
+        listB = list(map(str.strip, b.split(',')))
+        conjuntoA = set(listA)
+        conjuntoB = set(listB)
+        if (len(conjuntoA & conjuntoB) == 0):
+          return "(A ∩ B) = Ø"
+        else:
+          return "(A ∩ B) = ",conjuntoA & conjuntoB
+    </py-script>
+
+    <!-- Alfabeto Complemento -->
+    <py-script>
+      def alfabeto_complemento(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Complemento(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+      def Complemento(a,b):
+        listA = list(map(str.strip, a.split(',')))
+        listB = list(map(str.strip, b.split(',')))
+        conjuntoA = set(listA)
+        conjuntoB = set(listB)
+        if (len(conjuntoA - conjuntoB) == 0):
+          return"(B') = Ø"
+        else:
+          return"(B') = ",conjuntoA - conjuntoB
+    </py-script>
+
+    <!-- Alfabeto diferencia absoluta -->
+    <py-script>
+      def alfabeto_absoluta(*args,**kwargs):
+        result_place = Element('output')
+        solucion = DiferenciaAbsoluta(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+      def DiferenciaAbsoluta(a,b):
+        listA = list(map(str.strip, a.split(',')))
+        listB = list(map(str.strip, b.split(',')))
+        conjuntoA = set(listA)
+        conjuntoB = set(listB)
+        diferenciaA_B = conjuntoA - conjuntoB
+        diferenciaB_A = conjuntoB - conjuntoB
+        if (len(diferenciaA_B|diferenciaB_A) == 0):
+          return"(A \ B) = Ø"
+        else:
+          return"(A \ B) = ",diferenciaA_B|diferenciaB_A
+    </py-script>
+
+    <!-- Alfabeto diferencia simetrica -->
+    <py-script>
+      def alfabeto_simetrica(*args,**kwargs):
+        result_place = Element('output')
+        solucion = DiferenciaSimetrica(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+      def DiferenciaSimetrica(a,b):
+        listA = list(map(str.strip, a.split(',')))
+        listB = list(map(str.strip, b.split(',')))
+        conjuntoA = set(listA)
+        conjuntoB = set(listB)
+        if (len(conjuntoA^conjuntoB) == 0):
+          return "(A ⊕ B) = Ø"
+        else:
+          return "(A ⊕ B) = ",conjuntoA^conjuntoB
+    </py-script>
+
+
+    <script>
+
+      localStorage.setItem('sistema', true)
+      localStorage.setItem('opcionSeleccionada', null)
+      
+      const getSistema = (variable) => {
+        return localStorage.getItem(variable)
+      }
+      const setSistema = (variable, estado) => {
+        localStorage.setItem(variable, estado)
+        return
+      }
+
+      const mostrarBienvenida = () => {
+        if(getSistema('sistema') == 'false'){
+          $('.bienvenida').removeClass('d-none')
+          $('.bienvenida').addClass('d-flex')
+          $('.contenido').addClass('d-none')
+          $('.finalizar').addClass('d-none')
+        }else{
+          if(getSistema('opcionSeleccionada') != null){
+            $('.seleccioneUnaOpcion').removeClass('d-none')
+            $('.opcionSeleccionada').addClass('d-none')
+          }
+          $('.bienvenida').addClass('d-none') 
+          $('.bienvenida').removeClass('d-flex') 
+          $('.contenido').removeClass('d-none')
+          $('.finalizar').removeClass('d-none')
+        }
+      }
+
+      const capitalizeFirstLetter = (texto) => {
+        return texto.charAt(0).toUpperCase() + texto.slice(1);
+      }
+
+      mostrarBienvenida()
+
+      $('.finalizar').click(() => {
+          setSistema('opcionSeleccionada', null)
+          setSistema('sistema', false)
+          mostrarBienvenida()
+      })
+
+      $('.ingresoCalculadora').click(() => {
+        setSistema('sistema', 'true')
+        mostrarBienvenida()
+      })
+
+      const opcionSeleccionada = (opcion) => {
+        let arregloTitle = opcion.split('_')
+        let title = ''
+
+        arregloTitle.forEach(element => {
+          title += element+' ' 
+        });
+
+        
+        $('.input1').val('')
+        $('.input2').val('')
+        setSistema('opcionSeleccionada', opcion)
+
+        $('.titleInput').empty()
+        $('.titleInput').append(`${
+          capitalizeFirstLetter(title)
+        }`)
+
+        $('.seleccioneUnaOpcion').addClass('d-none')
+        $('.opcionSeleccionada').removeClass('d-none')
+
+        $('#output').empty()
+
+        $('.calcularButton').attr('pys-onClick', opcion)
+      }
+      
+      $('.limpiarValores').click(() => {
+        $('.input1').val('')
+        $('.input2').val('')
+        $('#output').empty()
+      })
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  </body>
+</html>

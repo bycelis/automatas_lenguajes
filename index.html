@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <style>
+        body {
+            background-color: lightgreen;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pertenecia-alf {
+            text-align: center;
+            background: white;
+            display: inline-block;
+            border-radius: 20px;
+            width: 96%;
+            margin: 1%;
+        }
+
+        .Union-alf {
+            text-align: center;
+            background: white;
+            display: inline-block;
+            border-radius: 20px;
+            width: 96%;
+            margin: 1%;
+        }
+
+        .Interseccion-alf {
+            text-align: center;
+            background: white;
+            display: inline-block;
+            border-radius: 20px;
+            width: 96%;
+            margin: 1%;
+        }
+
+        .Complemento-alf {
+            text-align: center;
+            background: white;
+            display: inline-block;
+            border-radius: 20px;
+            width: 96%;
+            margin: 1%;
+        }
+
+        .DiferenciaAbsoluta-alf {
+            text-align: center;
+            background: white;
+            display: inline-block;
+            border-radius: 20px;
+            width: 96%;
+            margin: 1%;
+        }
+
+        .DiferenciaSimetrica-alf {
+            text-align: center;
+            background: white;
+            display: inline-block;
+            border-radius: 20px;
+            width: 96%;
+            margin: 1%;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: black;
+            color: white;
+            margin-top: 3%;
+            padding-top: 3%;
+            padding-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <section class="pertenecia-alf">
+            <center>
+                <h1>ALFABETO - Pertenecia</h1>
+                <form onsubmit="return false">
+                    <label for="name">digite el conjunto A:</label><br>
+                    <input type="text" id="conjuntoA" name="conjuntoA" value=""><br>
+                    <label for="name">digite el conjunto B:</label><br>
+                    <input type="text" id="conjuntoB" name="conjuntoB" value=""><br>
+                    <input pys-onClick="subAlfaPertenecia" type="submit" id="btn-form-per" value="calcular">
+                </form>
+
+                <h3>resultado:</h3>
+                <p id='output-per'></p>
+                <py-script>
+                    def subAlfaPertenecia(*args,**kwargs):
+                    result_place = Element('output-per')
+                    solucion = Pertencia(Element('conjuntoA').value,Element('conjuntoB').value)
+                    result_place.write(solucion)
+                    def Pertencia(a,b):
+                    listA = list(map(str.strip, a.split(',')))
+                    listB = list(map(str.strip, b.split(',')))
+                    conjuntoA = set(listA)
+                    conjuntoB = set(listB)
+                    listresult =[]
+                    for i in conjuntoB:
+                    pertenece = False
+                    letra = ""
+                    for x in conjuntoA:
+                    if (i == x):
+                    pertenece = True
+                    letra = i
+                    else:
+                    letra = i
+                    if(pertenece == True):
+                    result = letra, " ∈ A"
+                    listresult.append(result)
+                    else:
+                    result = letra, " ∉ A"
+                    listresult.append(result)
+                    conjuntoRest = set(listresult)
+                    return conjuntoRest
+                </py-script>
+            </center>
+        </section>
+        <section class="Union-alf">
+            <center>
+                <h1>ALFABETO - Union</h1>
+                <form onsubmit="return false">
+                    <label for="name">digite el conjunto A:</label><br>
+                    <input type="text" id="conjuntoA-uni" name="conjuntoA-uni" value=""><br>
+                    <label for="name">digite el conjunto B:</label><br>
+                    <input type="text" id="conjuntoB-uni" name="conjuntoB-uni" value=""><br>
+                    <input pys-onClick="subAlfaUion" type="submit" id="btn-form-uni" value="calcular">
+                </form>
+
+                <h3>resultado:</h3>
+                <p id='output-uni'></p>
+                <py-script>
+                    def subAlfaUion(*args,**kwargs):
+                    result_place = Element('output-uni')
+                    solucion = Union(Element('conjuntoA-uni').value,Element('conjuntoB-uni').value)
+                    result_place.write(solucion)
+                    def Union(a,b):
+                    listA = list(map(str.strip, a.split(',')))
+                    listB = list(map(str.strip, b.split(',')))
+                    conjuntoA = set(listA)
+                    conjuntoB = set(listB)
+                    return "(A ∪ B) = ",conjuntoA|conjuntoB
+                </py-script>
+            </center>
+        </section>
+        <section class="Interseccion-alf">
+            <center>
+                <h1>ALFABETO - Interseccion</h1>
+                <form onsubmit="return false">
+                    <label for="name">digite el conjunto A:</label><br>
+                    <input type="text" id="conjuntoA-inter" name="conjuntoA-inter" value=""><br>
+                    <label for="name">digite el conjunto B:</label><br>
+                    <input type="text" id="conjuntoB-inter" name="conjuntoB-inter" value=""><br>
+                    <input pys-onClick="subAlfaInterseccion" type="submit" id="btn-form-inter" value="calcular">
+                </form>
+
+                <h3>resultado:</h3>
+                <p id='output-inter'></p>
+                <py-script>
+                    def subAlfaInterseccion(*args,**kwargs):
+                    result_place = Element('output-inter')
+                    solucion = Interseccion(Element('conjuntoA-inter').value,Element('conjuntoB-inter').value)
+                    result_place.write(solucion)
+                    def Interseccion(a,b):
+                    listA = list(map(str.strip, a.split(',')))
+                    listB = list(map(str.strip, b.split(',')))
+                    conjuntoA = set(listA)
+                    conjuntoB = set(listB)
+                    if (len(conjuntoA & conjuntoB) == 0):
+                    return "(A ∩ B) = Ø"
+                    else:
+                    return "(A ∩ B) = ",conjuntoA & conjuntoB
+                </py-script>
+            </center>
+        </section>
+        <section class="Complemento-alf">
+            <center>
+                <h1>ALFABETO - Complemento</h1>
+                <form onsubmit="return false">
+                    <label for="name">digite el conjunto A:</label><br>
+                    <input type="text" id="conjuntoA-comp" name="conjuntoA-comp" value=""><br>
+                    <label for="name">digite el conjunto B:</label><br>
+                    <input type="text" id="conjuntoB-comp" name="conjuntoB-comp" value=""><br>
+                    <input pys-onClick="subAlfaComplemento" type="submit" id="btn-form-comp" value="calcular">
+                </form>
+
+                <h3>resultado:</h3>
+                <p id='output-comp'></p>
+                <py-script>
+                    def subAlfaComplemento(*args,**kwargs):
+                    result_place = Element('output-comp')
+                    solucion = Complemento(Element('conjuntoA-comp').value,Element('conjuntoB-comp').value)
+                    result_place.write(solucion)
+                    def Complemento(a,b):
+                    listA = list(map(str.strip, a.split(',')))
+                    listB = list(map(str.strip, b.split(',')))
+                    conjuntoA = set(listA)
+                    conjuntoB = set(listB)
+                    if (len(conjuntoA - conjuntoB) == 0):
+                    return"(B') = Ø"
+                    else:
+                    return"(B') = ",conjuntoA - conjuntoB
+                </py-script>
+            </center>
+        </section>
+        <section class="DiferenciaAbsoluta-alf">
+            <center>
+                <h1>ALFABETO - Diferencia Absoluta</h1>
+                <form onsubmit="return false">
+                    <label for="name">digite el conjunto A:</label><br>
+                    <input type="text" id="conjuntoA-difAbs" name="conjuntoA-difAbs" value=""><br>
+                    <label for="name">digite el conjunto B:</label><br>
+                    <input type="text" id="conjuntoB-difAbs" name="conjuntoB-difAbs" value=""><br>
+                    <input pys-onClick="subAlfaDiferenciaAbsoluta" type="submit" id="btn-form-difAbs" value="calcular">
+                </form>
+
+                <h3>resultado:</h3>
+                <p id='output-difAbs'></p>
+                <py-script>
+                    def subAlfaDiferenciaAbsoluta(*args,**kwargs):
+                    result_place = Element('output-difAbs')
+                    solucion = DiferenciaAbsoluta(Element('conjuntoA-difAbs').value,Element('conjuntoB-difAbs').value)
+                    result_place.write(solucion)
+                    def DiferenciaAbsoluta(a,b):
+                    listA = list(map(str.strip, a.split(',')))
+                    listB = list(map(str.strip, b.split(',')))
+                    conjuntoA = set(listA)
+                    conjuntoB = set(listB)
+                    diferenciaA_B = conjuntoA - conjuntoB
+                    diferenciaB_A = conjuntoB - conjuntoB
+                    if (len(diferenciaA_B|diferenciaB_A) == 0):
+                    return"(A \ B) = Ø"
+                    else:
+                    return"(A \ B) = ",diferenciaA_B|diferenciaB_A
+                </py-script>
+            </center>
+        </section>
+        <section class="DiferenciaSimetrica-alf">
+            <center>
+                <h1>ALFABETO - Diferencia Simetrica</h1>
+                <form onsubmit="return false">
+                    <label for="name">digite el conjunto A:</label><br>
+                    <input type="text" id="conjuntoA-difSime" name="conjuntoA-difSime" value=""><br>
+                    <label for="name">digite el conjunto B:</label><br>
+                    <input type="text" id="conjuntoB-difSime" name="conjuntoB-difSime" value=""><br>
+                    <input pys-onClick="subAlfaDiferenciaSimetrica" type="submit" id="btn-form-difSime"
+                        value="calcular">
+                </form>
+
+                <h3>resultado:</h3>
+                <p id='output-difSime'></p>
+                <py-script>
+                    def subAlfaDiferenciaSimetrica(*args,**kwargs):
+                    result_place = Element('output-difSime')
+                    solucion =
+                    DiferenciaSimetrica(Element('conjuntoA-difSime').value,Element('conjuntoB-difSime').value)
+                    result_place.write(solucion)
+                    def DiferenciaSimetrica(a,b):
+                    listA = list(map(str.strip, a.split(',')))
+                    listB = list(map(str.strip, b.split(',')))
+                    conjuntoA = set(listA)
+                    conjuntoB = set(listB)
+                    if (len(conjuntoA^conjuntoB) == 0):
+                    return "(A ⊕ B) = Ø"
+                    else:
+                    return "(A ⊕ B) = ",conjuntoA^conjuntoB
+                </py-script>
+            </center>
+        </section>
+    </center>
+    <footer class="footer">
+        <center>
+            <p>DESARROLLADO POR: <br> Brandon Yesid Celis Orejarena <br> Javier Ricardo Baron Fuentes </p>
+        </center>
+    </footer>
+</body>
+
+</html>

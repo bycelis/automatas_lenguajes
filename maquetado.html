@@ -210,20 +210,20 @@
         for i in conjuntoB:
           pertenece = False
           letra = ""
-        for x in conjuntoA:
-          if (i == x):
-            pertenece = True
-            letra = i
-          else:
-            letra = i
+          for x in conjuntoA:
+            if (i == x):
+              pertenece = True
+              letra = i
+            else:
+              letra = i
           if(pertenece == True):
             result = letra, " ∈ A"
             listresult.append(result)
           else:
             result = letra, " ∉ A"
             listresult.append(result)
-          conjuntoRest = set(listresult)
-          return listresult
+        conjuntoRest = set(listresult)
+        return listresult
     </py-script>
 
     <!-- Alfabeto Union -->

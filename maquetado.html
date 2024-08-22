@@ -14,6 +14,48 @@
     </title>
   </head>
   <body>
+  <style>
+    body {
+        background-image: url('login_bg.png'); /* Reemplaza con la ruta de tu imagen */
+        background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
+        background-position: center; /* Centra la imagen en el fondo */
+    }
+    .btop{
+      background-color: #013916;
+    }
+    .text-menu{
+      color: white;
+    }
+    /*Botones funciones*/
+    .botonfunciones{
+      border-radius: 200px 200px 200px 200px;
+      -moz-border-radius: 200px 200px 200px 200px;
+      -webkit-border-radius: 200px 200px 200px 200px;
+      border: 0px solid #000000;
+    }
+    /*Información Banner*/
+    .information{	
+      font-family: 'Josefin Sans', sans-serif;
+      border-color: black;
+      color: white;
+      font-size: 11px;
+      text-align: right;
+      text-shadow: 2px 2px 5px #000000;
+    }
+    .inputcenter{
+      text-align: center
+    }
+  </style>
+
+    <div class="banner">
+			<div class="col-sm-12 navbar navbar-dark btop fixed-top"> 
+	  			<a class="navbar-brand font-tittle">Autómatas</a>
+	  			<div class="information">
+	  				Brandon Yesid Orejarena<br>
+	  				Javier Ricardo Baron Fuentes<br>
+	  			</div>
+			</div>
+		</div>
 
     <div class="d-flex justify-content-center align-items-center min-vh-100 bienvenida">
 
@@ -23,7 +65,7 @@
           <p>Brandon Yesid Celis Orejarena</p>
           <p>Javier Ricardo Baron Fuentes</p>
           <p>E196</p>
-          <a class="btn btn-sm btn-block btn-primary ingresoCalculadora">
+          <a class="btn btn-sm btn-block btn-success ingresoCalculadora">
             Ingresar al sistema
           </a>
         </div>
@@ -31,19 +73,23 @@
 
     </div>
 
-    <div class="">
-      <a class="finalizar btn btn-sm btn-danger">
-        Salir
-      </a>
+    <div class="container mt-16">
+      <div class="row">
+        <div class="col d-flex justify-content-end">
+          <a class="finalizar btn btn-sm btn-danger mb-4 mt-2">
+            Salir
+          </a>
+        </div>
+      </div>
   
       <div class="contenido">
         <div class="row flex-xl-nowrap">
           <div class="col-md-3 col-xl-2">
-            <div class="accordion" id="accordionExample">
+            <div class="accordion shadow" id="accordionExample">
               <div class="card">
-                <div class="card-header" id="headingOne">
+                <div class="card-header bg-primary" id="headingOne">
                   <h2 class="mb-0">
-                    <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <a class="btn btn-link btn-block text-left nav-link text-menu" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       Alfabetos
                     </a>
                   </h2>
@@ -51,50 +97,50 @@
             
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_pertenencia')">Pertenencia</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_union')">Unión</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_interseccion')">Intersección</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_complemento')">Complemento</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_absoluta')">Diferencia absoluta</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('alfabeto_simetrica')">Diferencia simétrica</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('alfabeto_pertenencia')">Pertenencia</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('alfabeto_union')">Unión</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('alfabeto_interseccion')">Intersección</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('alfabeto_complemento')">Complemento</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('alfabeto_absoluta')">Diferencia absoluta</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('alfabeto_simetrica')">Diferencia simétrica</a>
                   </div>
                 </div>
               </div>
               <div class="card">
-                <div class="card-header" id="headingTwo">
+                <div class="card-header bg-primary" id="headingTwo">
                   <h2 class="mb-0">
-                    <a class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <a class="btn btn-link btn-block text-left collapsed nav-link text-menu" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       Cadena
                     </a>
                   </h2>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_concatenacion')">Concatenación</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_potenciacion')">Potenciación</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_inversa')">Inversa</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('longitud_lenguaje')">Lenguaje</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_concatenacion')">Concatenación</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_potenciacion')">Potenciación</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_inversa')">Inversa</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_longitud')">Longitud</a>
                   </div>
                 </div>
               </div>
               <div class="card">
-                <div class="card-header" id="headingThree">
+                <div class="card-header bg-primary" id="headingThree">
                   <h2 class="mb-0">
-                    <a class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <a class="btn btn-link btn-block text-left collapsed nav-link text-menu" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       Lenguajes
                     </a>
                   </h2>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                   <div class="card-body">
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_potencia')">Potencia</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_concatenacion')">Concatenación</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_inversa')">Inversa</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_union')">Unión</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_interseccion')">Intersección</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_resta')">Resta</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_clausula_de_kleene')">Cláusula de Kleene</a>
-                    <a href="#" class="m-1 btn btn-primary btn-sm" onclick="opcionSeleccionada('concatenacion_positiva')">Positiva</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_potencia')">Potencia</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_concatenacion')">Concatenación</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_inversa')">Inversa</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_union')">Unión</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_interseccion')">Intersección</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_resta')">Resta</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_clausula_de_kleene')">Cláusula de Kleene</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('lenguaje_positiva')">Positiva</a>
                   </div>
                 </div>
               </div>
@@ -103,7 +149,7 @@
   
           <div class="col-md-8 col-xl-10">
 
-            <div class="card">
+            <div class="card shadow">
               <div class="card-body">
 
                 <div class="seleccioneUnaOpcion">
@@ -115,14 +161,14 @@
                   <form onsubmit="return false">
                     <h3 class="titleInput"></h3>
 
-                    <label for="">Ingrese x</label>
+                    <label class="label1" for="">Ingrese x</label>
                     <input type="text" class="form-control input1" name="conjuntoA" id="conjuntoA" placeholder="Ingrese valor">
-                    <label for="">Ingrese y</label>
+                    <label class="label2" for="">Ingrese y</label>
                     <input type="text" class="form-control input2" id="conjuntoB" name="conjuntoB" placeholder="Ingrese valor">
-                    <a href="#" class="m-1 btn btn-sm btn-primary mt-2 limpiarValores">
+                    <a href="#" class="m-1 btn btn-sm btn-secondary mt-2 limpiarValores">
                       Limpiar Valores
                     </a>
-                    <a pys-onClick="" id="botonConsulta" type="submit" href="#" class="m-1 btn btn-sm btn-success mt-2 calcularButton">
+                    <a pys-onClick="" id="botonConsulta" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 calcularButton">
                       Calcular
                     </a>
                   </form>
@@ -140,7 +186,13 @@
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="fixed-bottom">
+        <div class="text-center">
+          Unidades tecnologicas de Santander <br>
+          2024
+        </div>
+      </div>
 
     <!-- Alfabeto Pertenencia -->
     <py-script>
@@ -171,7 +223,7 @@
             result = letra, " ∉ A"
             listresult.append(result)
           conjuntoRest = set(listresult)
-          return conjuntoRest
+          return listresult
     </py-script>
 
     <!-- Alfabeto Union -->
@@ -261,7 +313,7 @@
 
     <script>
 
-      localStorage.setItem('sistema', true)
+      localStorage.setItem('sistema', false)
       localStorage.setItem('opcionSeleccionada', null)
       
       const getSistema = (variable) => {
@@ -308,6 +360,15 @@
       })
 
       const opcionSeleccionada = (opcion) => {
+
+        if(opcion == 'cadena_longitud' || opcion == 'cadena_inversa'){
+          $('.label2').addClass('d-none')
+          $('.input2').addClass('d-none')
+        }else{
+          $('.label2').removeClass('d-none')
+          $('.input2').removeClass('d-none')
+        }
+
         let arregloTitle = opcion.split('_')
         let title = ''
 

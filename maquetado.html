@@ -168,8 +168,24 @@
                     <a href="#" class="m-1 btn btn-sm btn-secondary mt-2 limpiarValores">
                       Limpiar Valores
                     </a>
-                    <a pys-onClick="" id="botonConsulta" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 calcularButton">
-                      Calcular
+
+                    <a pys-onClick="alfabeto_pertenencia" id="alfabeto_pertenencia" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular 1
+                    </a>
+                    <a pys-onClick="alfabeto_union" id="alfabeto_union" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular 2
+                    </a>
+                    <a pys-onClick="alfabeto_interseccion" id="alfabeto_interseccion" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular 3
+                    </a>
+                    <a pys-onClick="alfabeto_complemento" id="alfabeto_complemento" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular 4
+                    </a>
+                    <a pys-onClick="alfabeto_absoluta" id="alfabeto_absoluta" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular 5
+                    </a>
+                    <a pys-onClick="alfabeto_simetrica" id="alfabeto_simetrica" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular 6
                     </a>
                   </form>
                   <hr>
@@ -313,7 +329,8 @@
 
     <script>
 
-      localStorage.setItem('sistema', false)
+      localStorage.setItem('sistema', true)
+      localStorage.setItem('opcionSeleccionadaAnterior', null)
       localStorage.setItem('opcionSeleccionada', null)
       
       const getSistema = (variable) => {
@@ -379,7 +396,14 @@
         
         $('.input1').val('')
         $('.input2').val('')
-        setSistema('opcionSeleccionada', opcion)
+
+        if(getSistema('opcionSeleccionadaAnterior') == 'null'){
+          setSistema('opcionSeleccionadaAnterior', opcion)
+          setSistema('opcionSeleccionada', opcion)
+        }else{
+          setSistema('opcionSeleccionadaAnterior', getSistema('opcionSeleccionada'))
+          setSistema('opcionSeleccionada', opcion)
+        }
 
         $('.titleInput').empty()
         $('.titleInput').append(`${
@@ -391,7 +415,8 @@
 
         $('#output').empty()
 
-        $('.calcularButton').attr('pys-onClick', opcion)
+        $('#'+getSistema('opcionSeleccionadaAnterior')).addClass('d-none')
+        $('#'+opcion).removeClass('d-none')
       }
       
       $('.limpiarValores').click(() => {

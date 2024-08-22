@@ -117,7 +117,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
                     <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_concatenacion')">Concatenación</a>
-                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_potenciacion')">Potenciación</a>
+                    <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_potencia')">Potenciación</a>
                     <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_inversa')">Inversa</a>
                     <a href="#" class="m-1 btn btn-success btn-sm btn-block" onclick="opcionSeleccionada('cadena_longitud')">Longitud</a>
                   </div>
@@ -169,6 +169,7 @@
                       Limpiar Valores
                     </a>
 
+                    <!-- Alfabeto -->
                     <a pys-onClick="alfabeto_pertenencia" id="alfabeto_pertenencia" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
                       Calcular
                     </a>
@@ -185,6 +186,47 @@
                       Calcular
                     </a>
                     <a pys-onClick="alfabeto_simetrica" id="alfabeto_simetrica" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+
+                    <!-- Cadena -->
+                    <a pys-onClick="cadena_longitud" id="cadena_longitud" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="cadena_concatenacion" id="cadena_concatenacion" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="cadena_potencia" id="cadena_potencia" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="cadena_inversa" id="cadena_inversa" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+
+                    
+                    <!-- Lenguaje -->
+                    <a pys-onClick="lenguaje_potencia" id="lenguaje_potencia" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_concatenacion" id="lenguaje_concatenacion" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_inversa" id="lenguaje_inversa" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_union" id="lenguaje_union" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_interseccion" id="lenguaje_interseccion" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_resta" id="lenguaje_resta" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_kleene" id="lenguaje_kleene" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
+                      Calcular
+                    </a>
+                    <a pys-onClick="lenguaje_positiva" id="lenguaje_positiva" type="submit" href="#" class="m-1 btn btn-sm btn-info mt-2 d-none">
                       Calcular
                     </a>
                   </form>
@@ -209,6 +251,7 @@
           2024
         </div>
       </div>
+    </div>
 
     <!-- Alfabeto Pertenencia -->
     <py-script>
@@ -326,11 +369,84 @@
           return "(A ⊕ B) = ",conjuntoA^conjuntoB
     </py-script>
 
+    <!-- Cadena longitud -->
+    <py-script>
+      def cadena_longitud(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Longitud(Element('conjuntoA').value)
+        result_place.write(solucion)
+      def Longitud(a):
+        if(len(a)==0):
+          return"|λ| = λ"
+        else:
+          return"|", a ,"| = ", len(a)
+    </py-script>
+
+    <!-- Cadena concatenacion -->
+    <py-script>
+      def cadena_concatenacion(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Concatenacion(Element('conjuntoA').value,Element('conjuntoB').value)
+        result_place.write(solucion)
+      def Concatenacion(a,b):
+        if(a == ""):
+          result = "λ"+b
+          return"AB = ", result
+        elif(b == ""):
+          result = a+"λ"
+          return"AB = ", result
+        else:
+          result = a+""+b
+          return"AB = ", result
+    </py-script>
+    
+    <!-- Cadena potencia -->
+    <py-script>
+      def cadena_potencia(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Potenciacion(Element('conjuntoB').value,Element('conjuntoA').value)
+        result_place.write(solucion)
+      def Potenciacion(a,b):
+        if(int(b) == 0):
+          return a,b.translate(str.maketrans("0123456789","⁰¹²³⁴⁵⁶⁷⁸⁹"))," = λ"
+        elif(int(b) != 0):
+          if((a*int(b)) == 0):
+            return a,b.translate(str.maketrans("0123456789","⁰¹²³⁴⁵⁶⁷⁸⁹"))," = λ"
+          else:
+            return a,b.translate(str.maketrans("0123456789","⁰¹²³⁴⁵⁶⁷⁸⁹"))," = ",(a*int(b))
+        else:
+          return "λ","0".translate(str.maketrans("0123456789","⁰¹²³⁴⁵⁶⁷⁸⁹"))," = λ"
+    </py-script>
+        
+    <!-- Cadena inversa -->
+    <py-script>
+      def cadena_inversa(*args,**kwargs):
+        result_place = Element('output')
+        solucion = Inversa(Element('conjuntoA').value)
+        result_place.write(solucion)
+      def Inversa(a):
+        if(len(a)==0):
+          return"A = λ \nAᴿ = λ"
+        else:
+          return"A = ", a, "\nAᴿ = ",a[::-1]
+    </py-script>
+
+
+<!--
+    lenguaje_potencia
+    lenguaje_concatenacion
+    lenguaje_inversa
+    lenguaje_union
+    lenguaje_interseccion
+    lenguaje_resta
+    lenguaje_kleene
+    lenguaje_positiva
+-->
+
 
     <script>
 
-      localStorage.setItem('sistema', true)
-      localStorage.setItem('opcionSeleccionadaAnterior', null)
+      localStorage.setItem('sistema', false)
       localStorage.setItem('opcionSeleccionada', null)
       
       const getSistema = (variable) => {
@@ -366,6 +482,7 @@
       mostrarBienvenida()
 
       $('.finalizar').click(() => {
+          setSistema('opcionSeleccionadaAnterior', null)
           setSistema('opcionSeleccionada', null)
           setSistema('sistema', false)
           mostrarBienvenida()
@@ -397,8 +514,8 @@
         $('.input1').val('')
         $('.input2').val('')
 
-        if(getSistema('opcionSeleccionadaAnterior') == 'null'){
-          setSistema('opcionSeleccionadaAnterior', opcion)
+        if(!getSistema('opcionSeleccionadaAnterior')){
+          setSistema('opcionSeleccionadaAnterior', null)
           setSistema('opcionSeleccionada', opcion)
         }else{
           setSistema('opcionSeleccionadaAnterior', getSistema('opcionSeleccionada'))
